@@ -13,19 +13,29 @@ public class snakeladder{
             		int checkForOption = (int) Math.floor(Math.random() * 10) % 3;
             		if (checkForOption == ladder) {
                 		playPosition = playPosition + rollDice;
+                		if (playPosition >100){
+                    			playPosition=100;
+                		}
             		}
 			else if (checkForOption == snake) {
                 		playPosition = playPosition - rollDice;
-                		if(playPosition<0){
-                    			playPosition=initialPosition;
-                	}
-            	}
-                if (playPosition == winingPosition) {
-                	System.out.println("win");
-                	break;
-            	}
+               			if(playPosition < initialPosition){
+                   			playPosition=0;
+               			}
+				else if (playPosition > 100){
+                   			playPosition=100;
+               			}
+               		}
 
-        }
 
-    }
+         		if (playPosition < winingPosition) {
+                		playPosition = playPosition;
+			}
+			else if (playPosition == winingPosition) {
+                		System.out.println(" Exact win");
+				break;
+            		}
+		}
+	}
 }
+
